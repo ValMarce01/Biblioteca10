@@ -1,6 +1,6 @@
 package repository;
 
-import model.AlunoModel;
+import model.LivroModel;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,11 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlunoRepository {
-    private static AlunoRepository instance;
+public class LivroRepository {
+    private static LivroRepository instance;
     protected EntityManager entityManager;
 
-    public AlunoRepository() {
+    public LivroRepository() {
         entityManager = getEntityManager();
     }
 
@@ -25,17 +25,17 @@ public class AlunoRepository {
         return entityManager;
     }
 
-    public static AlunoRepository getInstance() {
+    public static LivroRepository getInstance() {
         if (instance == null) {
-            instance = new AlunoRepository();
+            instance = new LivroRepository();
         }
         return instance;
     }
 
-    public String salvar(AlunoModel aluno) throws SQLException {
+    public String salvar(LivroModel livro) throws SQLException {
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(aluno);
+            entityManager.persist(livro);
             entityManager.getTransaction().commit();
             return "Salvo com Sucesso.";
         } catch (Exception e) {
@@ -43,20 +43,19 @@ public class AlunoRepository {
         }
     }
 
-    public List<AlunoModel> buscarTodos() {
+    public List<LivroModel> buscarTodos() {
         try {
-            List<AlunoModel> alunos = entityManager.createQuery("from AlunoModel").getResultList();
-            return alunos;
+            List<LivroModel> livros = entityManager.createQuery("from LivroModel").getResultList();
+            return livros;
         } catch (Exception e) {
             return new ArrayList<>();
-
         }
     }
 
-    public String remover(AlunoModel aluno){
+    public String remover(LivroModel livro) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.remove(aluno);
+            entityManager.remove(livro);
             entityManager.getTransaction().commit();
             return "Removido com sucesso!";
         } catch (Exception e) {
@@ -64,13 +63,13 @@ public class AlunoRepository {
         }
     }
 
-    public AlunoModel buscarPorId(Long id) {
-        AlunoModel aluno = new AlunoModel();
+    public LivroModel buscarPorId(Long id) {
+        LivroModel livro = new LivroModel();
         try {
-            aluno = entityManager.find(AlunoModel.class, id);
+            livro = entityManager.find(LivroModel.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return aluno;
+        return livro;
     }
 }

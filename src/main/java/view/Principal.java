@@ -9,40 +9,56 @@ public class Principal extends JFrame {
     private JPanel jpainelPrincipal;
 
     public Principal() {
-        criacaoDoMenu();
-        this.setTitle("Sistema - Escola nova CB");
+        this.setTitle("Sistema - Biblioteca");
         this.setContentPane(jpainelPrincipal);
-        this.setSize(640,480);
+        this.setSize(640, 480);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        criacaoDoMenu();
         this.setVisible(true);
     }
 
-    public void criacaoDoMenu(){
+    public void criacaoDoMenu() {
         this.setJMenuBar(menuBar);
-        JMenu arquivo = new JMenu("Arquivo");
-        JMenuItem opcao1 = new JMenuItem("Opção 1");
-        JMenuItem opcao2 = new JMenuItem("Opção 2");
-        arquivo.add(opcao1);
-        arquivo.add(opcao2);
-        JMenu manterAluno = new JMenu("Manter Alunos");
-        JMenuItem cadastro = new JMenuItem("Cadastrar");
-        JMenuItem editar = new JMenuItem("Edição");
-        JMenuItem buscar = new JMenuItem("Buscar");
-        manterAluno.add(cadastro);
-        manterAluno.add(editar);
-        manterAluno.add(buscar);
-        menuBar.add(arquivo);
-        menuBar.add(manterAluno);
-        cadastro.addActionListener(new ActionListener() {
+        JMenu manterLivro = new JMenu("Menu Livros");
+        JMenuItem cadastroLivro = new JMenuItem("Cadastrar");
+        JMenuItem buscarLivro = new JMenuItem("Buscar");
+        manterLivro.add(cadastroLivro);
+        manterLivro.add(buscarLivro);
+
+        JMenu manterUsuario = new JMenu("Menu Usuarios");
+        JMenuItem cadastroUsuario = new JMenuItem("Cadastrar");
+        JMenuItem buscarUsuario = new JMenuItem("Buscar");
+        manterUsuario.add(cadastroUsuario);
+        manterUsuario.add(buscarUsuario);
+
+        menuBar.add(manterLivro);
+        menuBar.add(manterUsuario);
+
+        cadastroLivro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new CadastroDeAluno();
+                new CadastroDeLivro();
             }
         });
-        buscar.addActionListener(new ActionListener() {
+
+        buscarLivro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new BuscaAluno();
+                new BuscaDeLivro();
+            }
+        });
+
+        cadastroUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new CadastroDeUsuario();
+            }
+        });
+
+        buscarUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new BuscaDeLivro();
             }
         });
     }

@@ -6,16 +6,11 @@ import model.UsuarioModel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 public class CadastroDeUsuario extends JFrame {
     private JPanel jpanelPrincipal;
-    private JButton enviarButton;
+    private JButton Enviar;
     private JTextField textFieldNome;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JButton editarButton;
     private JTextField textFieldSexo;
     private JTextField textFieldCelular;
     private JTextField textFieldEmail;
@@ -29,7 +24,7 @@ public class CadastroDeUsuario extends JFrame {
 
         UsuarioController usuarioController = new UsuarioController();
 
-        enviarButton.addActionListener(new ActionListener() {
+        Enviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UsuarioModel usuario = new UsuarioModel();
@@ -37,17 +32,7 @@ public class CadastroDeUsuario extends JFrame {
                 usuario.setSexo(textFieldSexo.getText());
                 usuario.setCelular(textFieldCelular.getText());
                 usuario.setEmail(textFieldEmail.getText());
-                try {
-                    JOptionPane.showMessageDialog(null, usuarioController.salvar(usuario));
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Erro ao salvar usuário: " + ex.getMessage());
-                }
-            }
-        });
-        editarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+                JOptionPane.showMessageDialog(null, usuarioController.salvar(usuario));
             }
         });
     }

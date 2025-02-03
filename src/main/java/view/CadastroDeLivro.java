@@ -17,9 +17,8 @@ public class CadastroDeLivro extends JFrame {
     private JTextField textField3; // ISBN
     private JTextField textField4; // Data de Publicação
     private JTextField textField5; // Quantidade Disponível
-    private JButton enviarButton;
+    private JButton Enviar;
     private JPanel jPanelPrincipal;
-    private JButton editarButton;
 
     public CadastroDeLivro() {
         this.setTitle("Sistema - Biblioteca");
@@ -30,7 +29,7 @@ public class CadastroDeLivro extends JFrame {
 
         LivroController livroController = new LivroController();
 
-        enviarButton.addActionListener(new ActionListener() {
+        Enviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 LivroModel livro = new LivroModel();
@@ -58,12 +57,6 @@ public class CadastroDeLivro extends JFrame {
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar livro: " + ex.getMessage());
                 }
-            }
-        });
-        editarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
             }
         });
     }

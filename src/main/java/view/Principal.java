@@ -13,6 +13,7 @@ public class Principal extends JFrame {
         this.setContentPane(jpainelPrincipal);
         this.setSize(640, 480);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
         criacaoDoMenu();
         this.setVisible(true);
     }
@@ -58,7 +59,7 @@ public class Principal extends JFrame {
         buscarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new BuscaDeLivro();
+                new BuscaDeUsuario();
             }
         });
     }

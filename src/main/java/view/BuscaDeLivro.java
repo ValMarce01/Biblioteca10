@@ -18,6 +18,7 @@ public class BuscaDeLivro extends JFrame {
     private JPanel jPanelPrincipal;
     private JButton removerButton;
     private JScrollPane tabela;
+    private JButton Editar;
     private LivroController livroController = new LivroController();
 
     public BuscaDeLivro() {
@@ -57,7 +58,17 @@ public class BuscaDeLivro extends JFrame {
                 tableBuscaLivro.setModel(livroModeloDeTabela);
             }
         });
+        Editar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
+
+    //private void BuscarLivro(){
+      //  String value = pesquisa.getText().
+
 
     private static class LivroModeloDeTabela extends AbstractTableModel {
         private LivroRepository livroRepository = new LivroRepository();

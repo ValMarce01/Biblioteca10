@@ -14,6 +14,7 @@ import java.util.Date;
 public class CadastroDeLivro extends JFrame {
     private JTextField textField1; // Título
     private JTextField textField2; // Tema
+    private JTextField textField6; // Autor
     private JTextField textField3; // ISBN
     private JTextField textField4; // Data de Publicação
     private JTextField textField5; // Quantidade Disponível
@@ -35,6 +36,7 @@ public class CadastroDeLivro extends JFrame {
                 LivroModel livro = new LivroModel();
                 livro.setTitulo(textField1.getText());
                 livro.setTema(textField2.getText());
+                livro.setAutor(textField6.getText()); // Correção aqui
                 livro.setIsbn(textField3.getText());
 
                 try {

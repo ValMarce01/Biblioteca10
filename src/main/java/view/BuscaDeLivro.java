@@ -61,14 +61,21 @@ public class BuscaDeLivro extends JFrame {
         Editar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                int linhaSelecionada = tableBuscaLivro.getSelectedRow();
+                if (linhaSelecionada != -1) {
+                    Long idDoLivroSelecionado = Long.parseLong(tableBuscaLivro.getValueAt(linhaSelecionada, 0).toString());
+                    try {
+                        LivroModel livro = livroController.buscarPorId(idDoLivroSelecionado);
+                        new EditarLivro(livro);
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao buscar livro: " + ex.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione o registro que deseja editar");
+                }
             }
         });
     }
-
-    //private void BuscarLivro(){
-      //  String value = pesquisa.getText().
-
 
     private static class LivroModeloDeTabela extends AbstractTableModel {
         private LivroRepository livroRepository = new LivroRepository();

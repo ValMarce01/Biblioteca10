@@ -55,7 +55,14 @@ public class BuscaDeUsuario extends JFrame {
         Editar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                int linhaSelecionada = tableBuscaUsuario.getSelectedRow();
+                if (linhaSelecionada != -1) {
+                    Long idDoUsuarioSelecionado = Long.parseLong(tableBuscaUsuario.getValueAt(linhaSelecionada, 0).toString());
+                    UsuarioModel usuario = usuarioController.buscarPorId(idDoUsuarioSelecionado);
+                    new EditarUsuario(usuario);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione o registro que deseja editar");
+                }
             }
         });
     }
